@@ -1,21 +1,22 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import './styles/Navbar.css'
-import logo from '../images/logo.svg'
+import "./styles/Navbar.css";
+import logo from "../images/logo.svg";
 
 class ClientNew extends React.Component {
   render() {
     return (
       <div className="Navbar">
         <div className="container-fluid">
-          <a className="Navbar__brand" href="/">
+          <Link className="Navbar__brand" to="/">
             <img className="Navbar_brand-logo" src={logo} alt="Logo" />
             <span className="font-weight-light">Tracking</span>
             <span className="font-weight-bold">System</span>
-          </a>
+          </Link>
         </div>
       </div>
-    )
+    );
   }
 }
 

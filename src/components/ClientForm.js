@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 class ClientForm extends React.Component {
   // state = {
@@ -16,40 +16,66 @@ class ClientForm extends React.Component {
   // }
 
   handleClick = (e) => {
-    console.log("Button was click")
-  }
+    console.log("Button was click");
+  };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    console.log('Form was subtmit')
-    console.log(this.state)
-  }
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("Form was subtmit");
+  //   console.log(this.state);
+  // };
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <h1>New Client</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.props.onSubmit}>
           <div className="form-group">
             <label>First Name</label>
-            <input onChange={this.props.onChange} className="form-control" type="text" name="firstName" value={this.props.formValues.firstName} />
+            <input
+              onChange={this.props.onChange}
+              className="form-control"
+              type="text"
+              name="firstname"
+              value={this.props.formValues.firstname}
+            />
           </div>
           <div className="form-group">
             <label>Last Name</label>
-            <input onChange={this.props.onChange} className="form-control" type="text" name="lastName" value={this.props.formValues.lastName} />
+            <input
+              onChange={this.props.onChange}
+              className="form-control"
+              type="text"
+              name="lastname"
+              value={this.props.formValues.lastname}
+            />
           </div>
           <div className="form-group">
             <label>Document</label>
-            <input onChange={this.props.onChange} className="form-control" type="text" name="document" value={this.props.formValues.document} />
+            <input
+              onChange={this.props.onChange}
+              className="form-control"
+              type="text"
+              name="ci"
+              value={this.props.formValues.ci}
+            />
           </div>
           <div className="form-group">
             <label>Birthday</label>
-            <input onChange={this.props.onChange} className="form-control" type="text" name="birthday" value={this.props.formValues.birthday} />
+            <input
+              onChange={this.props.onChange}
+              className="form-control"
+              type="text"
+              name="birthday"
+              value={this.props.formValues.birthday}
+            />
           </div>
-          <button onClick={this.handleClick} className="btn btn-primary">Save</button>
+          <button onClick={this.handleClick} className="btn btn-primary">
+            Save
+          </button>
         </form>
-      </div>
-    )
+      </React.Fragment>
+    );
   }
 }
 

@@ -1,19 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import './global.css'
-import 'bootstrap/dist/css/bootstrap.css';
-// import Client from './components/Client'
-// import ClientNew from './pages/ClientNew';
-import Clients from './pages/Clients';
-import reportWebVitals from './reportWebVitals';
+import "./global.css";
+import "bootstrap/dist/css/bootstrap.css";
+import App from "./components/App";
+import reportWebVitals from "./reportWebVitals";
+
+const container = document.getElementById("root");
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <Client firstname="Diego" lastname="Saldivar" /> */}
-    <Clients />
+    <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  container
 );
 
 reportWebVitals();
