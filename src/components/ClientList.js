@@ -27,9 +27,9 @@ class ClientList extends React.Component {
                   alt="Avatar"
                 />
                 <li>
-                  <p>
+                  <Link className="text-reset text-decoration-none" to={`/clients/${client.ID}`}>
                     {client.firstname} {client.lastname}
-                  </p>
+                  </Link>
                 </li>
               </div>
             );

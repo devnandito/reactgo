@@ -15,9 +15,9 @@ class ClientForm extends React.Component {
   //   })
   // }
 
-  handleClick = (e) => {
-    console.log("Button was click");
-  };
+  // handleClick = (e) => {
+  //   console.log("Button was click");
+  // };
 
   // handleSubmit = (e) => {
   //   e.preventDefault();
@@ -28,7 +28,6 @@ class ClientForm extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>New Client</h1>
         <form onSubmit={this.props.onSubmit}>
           <div className="form-group">
             <label>First Name</label>
@@ -70,9 +69,12 @@ class ClientForm extends React.Component {
               value={this.props.formValues.birthday}
             />
           </div>
-          <button onClick={this.handleClick} className="btn btn-primary">
+          <button className="btn btn-primary">
             Save
           </button>
+          {this.props.error && (
+            <p className="text-danger">{this.props.error.message}</p>
+          )}
         </form>
       </React.Fragment>
     );

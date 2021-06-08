@@ -1,14 +1,14 @@
 import React from "react";
 
-import "./styles/ClientNew.css";
+import "./styles/ClientEdit.css";
 import header from "../images/platzi-conf-logo.svg";
 import Client from "../components/Client";
 import ClientForm from "../components/ClientForm";
 import PageLoading from "../components/PageLoading";
 
-class ClientNew extends React.Component {
+class ClientEdit extends React.Component {
   state = {
-    loading: false,
+    loading: true,
     error: null,
     form: {
       firstname: "",
@@ -17,6 +17,23 @@ class ClientNew extends React.Component {
       birthday: "",
     },
   };
+
+  componentDidMount() {
+    this.fechData()
+  }
+
+  fechData = async e => {
+    this.setState({ loading: true, error: null })
+    try {
+      const uri = `http://localhost:9000/api/clients/${this.props.match.params.clientId}`;
+      const response = await fetch(uri)
+      const data = await response.json()
+      // console.log(data[0])
+      this.setState({ loading: false, form: data[0] })
+    } catch (error) {
+      this.setState({ loading: false, error: error });
+    }
+  }
 
   handleChange = (e) => {
     this.setState({
@@ -31,7 +48,7 @@ class ClientNew extends React.Component {
     e.preventDefault();
     this.setState({ loading: true, error: null });
     const requestOptions = {
-      method: "POST",
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         firstname: this.state.form.firstname,
@@ -41,7 +58,7 @@ class ClientNew extends React.Component {
     };
 
     try {
-      const uri = "http://localhost:9000/api/clients";
+      const uri = `http://localhost:9000/api/clients/${this.props.match.params.clientId}`;
       const response = await fetch(uri, requestOptions);
       const data = await response.json();
       console.log(data);
@@ -58,9 +75,9 @@ class ClientNew extends React.Component {
     }
     return (
       <React.Fragment>
-        <div className="BadgeNew__hero">
+        <div className="BadgeEdit__hero">
           <img
-            className="BadgeNew__hero-image img-fluid"
+            className="BadgeEdit__hero-image img-fluid"
             src={header}
             alt="Logo"
           />
@@ -76,7 +93,7 @@ class ClientNew extends React.Component {
               />
             </div>
             <div className="col-6">
-              <h1>New Client</h1>
+              <h1>Edit Client</h1>
               <ClientForm
                 onChange={this.handleChange}
                 onSubmit={this.handleSubmit}
@@ -91,4 +108,4 @@ class ClientNew extends React.Component {
   }
 }
 
-export default ClientNew;
+export default ClientEdit;
