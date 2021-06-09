@@ -1,0 +1,27 @@
+import React from "react";
+
+import Modal from "./Modal";
+
+function DeleteClientModal(props) {
+  return (
+    <Modal isOpen={props.isOpen} onClose={props.onClose}>
+      <div className="DeleteClientModal">
+        <h1>Are you Sure</h1>
+        <p>You are about to delete this client.</p>
+        <div>
+          <button
+            onClick={props.onDeleteClient}
+            className="btn btn-danger mr-4"
+          >
+            Delete
+          </button>
+          <button onClick={props.onClose} className="btn btn-primary">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </Modal>
+  );
+}
+
+export default DeleteClientModal;
