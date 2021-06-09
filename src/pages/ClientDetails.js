@@ -20,7 +20,6 @@ function ClientDetails(props) {
             <div className="col-6">
               <div className="BadgeDetails__hero-attendant-name">
                 <h1>
-                  {" "}
                   {cls.firstname} {cls.lastname}
                 </h1>
               </div>
